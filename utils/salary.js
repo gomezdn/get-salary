@@ -85,7 +85,7 @@ export async function getSalary(usdSalary, retries = 3) {
   } catch (e) {
     if (retries) {
       console.log(`There was an error, retrying... (${retries} retries left).`);
-      getSalary(retries - 1);
+      getSalary(usdSalary, retries - 1);
     } else {
       console.error(e);
       throw new Error('Failed too many times, exiting. Try again in a while');
