@@ -1,8 +1,16 @@
 # USAGE
 
-## - GET /getSalary
+## GET
 
-### Response:
+### /getSalary
+
+- It will use a default usdSalary.
+
+#### /getSalary?usdSalary=\`number\`
+
+- You can pass your usdSalary as a query param.
+
+##### Response:
 
 ```json
       data: {

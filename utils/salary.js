@@ -36,8 +36,8 @@ async function getDocPrice() {
   }
 }
 
-export async function getSalary(retries = 3) {
-  if (!USD_SALARY) {
+export async function getSalary(usdSalary, retries = 3) {
+  if (!(usdSalary || USD_SALARY)) {
     throw new Error('Please set a salary in USD first in .env file');
   }
 
@@ -48,7 +48,9 @@ export async function getSalary(retries = 3) {
     const precio_dolar_oficial = await getOficialPrice();
     const precio_doc = await getDocPrice();
 
-    const bruto_en_pesos = parseFloat(precio_dolar_ccl * USD_SALARY);
+    const bruto_en_pesos = parseFloat(
+      precio_dolar_ccl * (usdSalary || USD_SALARY)
+    );
     const especias_en_pesos = parseFloat(bruto_en_pesos * 0.2);
     const neto_en_pesos_sin_especias = parseFloat(
       bruto_en_pesos * 0.83 - especias_en_pesos
