@@ -90,8 +90,3 @@ export async function getSalary(retries = 3) {
     }
   }
 }
-
-(async function () {
-  const res = await getSalary();
-  console.log(res);
-})();
