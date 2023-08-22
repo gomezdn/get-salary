@@ -6,9 +6,9 @@
 
 - It will use a default usdSalary.
 
-#### /getSalary?usdSalary=\`number\`
+#### /getSalary?usdSalary=\`number\`&cclPrice=\`number\`
 
-- You can pass your usdSalary as a query param.
+- You can pass a usdSalary and/or cclPrice as a query params.
 
 ##### Response:
 
