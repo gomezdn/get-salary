@@ -44,12 +44,12 @@ export async function getSalary({ usdSalary, cclPrice } = {}, retries = 3) {
   try {
     const startTime = Date.now();
 
-    const precio_dolar_ccl = cclPrice || await getCclPrice();
+    const precio_dolar_ccl = parseFloat(cclPrice) || await getCclPrice();
     const precio_dolar_oficial = await getOficialPrice();
     const precio_doc = await getDocPrice();
 
     const bruto_en_pesos = parseFloat(
-      precio_dolar_ccl * (usdSalary || USD_SALARY)
+      precio_dolar_ccl * (parseFloat(usdSalary) || USD_SALARY)
     );
     const especias_en_pesos = parseFloat(bruto_en_pesos * 0.2);
     const neto_en_pesos_sin_especias = parseFloat(
