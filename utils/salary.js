@@ -36,7 +36,7 @@ async function getDocPrice() {
   }
 }
 
-export async function getSalary(usdSalary, retries = 3) {
+export async function getSalary({ usdSalary, cclPrice } = {}, retries = 3) {
   if (!(usdSalary || USD_SALARY)) {
     throw new Error('Please set a salary in USD first in .env file');
   }
@@ -44,7 +44,7 @@ export async function getSalary(usdSalary, retries = 3) {
   try {
     const startTime = Date.now();
 
-    const precio_dolar_ccl = await getCclPrice();
+    const precio_dolar_ccl = cclPrice || await getCclPrice();
     const precio_dolar_oficial = await getOficialPrice();
     const precio_doc = await getDocPrice();
 

@@ -6,8 +6,8 @@ const app = express();
 
 async function getSalaryController(req, res) {
   try {
-    const { usdSalary } = req.query;
-    const salary = await getSalary(usdSalary);
+    const { usdSalary, cclPrice } = req.query;
+    const salary = await getSalary({ usdSalary, cclPrice });
 
     if (salary) {
       res.status(200).json(salary).end();
